@@ -1,0 +1,26 @@
+
+
+Code Coverage Report:     
+  2016-05-27 23:39:48     
+                          
+ Summary:                 
+  Classes: 100.00% (10/10)
+  Methods: 100.00% (23/23)
+  Lines:   100.00% (79/79)
+
+\database\QueryBundle\parameter::AbstractParameter
+  Methods: 100.00% ( 7/ 7)   Lines: 100.00% ( 11/ 11)
+\database\QueryBundle\parameter::ArrayParameter
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 23/ 23)
+\database\QueryBundle\parameter::BooleanParameter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+\database\QueryBundle\parameter::DatetimeParameter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+\database\QueryBundle\parameter::IntegerParameter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+\database\QueryBundle\parameter::NullParameter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+\database\QueryBundle\parameter::ResourceParameter
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+\database\QueryBundle\query::Query
+  Methods: 100.00% ( 6/ 6)   Lines: 100.00% ( 35/ 35)

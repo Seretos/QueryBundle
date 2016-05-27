@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://phpunit.de/manual/4.1/en/appendixes.configuration.html -->
+<phpunit backupGlobals="false"
+         colors="true">
+    <testsuites>
+        <testsuite name="query unit tests">
+            <file>tests/factory/QueryFactoryTest.php</file>
+            <file>tests/parameter/ArrayParameterTest.php</file>
+            <file>tests/parameter/BooleanParameterTest.php</file>
+            <file>tests/parameter/DatetimeParameterTest.php</file>
+            <file>tests/parameter/IntegerParameterTest.php</file>
+            <file>tests/parameter/NullParameterTest.php</file>
+            <file>tests/parameter/ResourceParameterTest.php</file>
+            <file>tests/parameter/StringParameterTest.php</file>
+            <file>tests/query/QueryTest.php</file>
+        </testsuite>
+
+        <testsuite name="query functional tests">
+            <file>tests/MysqliFunctionalQueryTest.php</file>
+            <file>tests/PDOFunctionalQueryTest.php</file>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-text" target="coverage.txt" lowUpperBound="35"
+             highLowerBound="70"/>
+    </logging>
+    <filter>
+        <whitelist>
+            <directory>exception</directory>
+            <directory>interfaces</directory>
+            <directory>parameter</directory>
+            <directory>query</directory>
+            <directory>result</directory>
+        </whitelist>
+    </filter>
+</phpunit>
