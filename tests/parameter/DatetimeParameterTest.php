@@ -56,7 +56,7 @@ class DatetimeParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', $this->date->format('Y-m-d H:i:s'), PDO::PARAM_STR);
 
         $this->parameter->bindParam($statement);

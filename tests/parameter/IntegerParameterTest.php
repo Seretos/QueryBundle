@@ -49,7 +49,7 @@ class IntegerParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', 3, PDO::PARAM_INT);
 
         $this->parameter->bindParam($statement);

@@ -81,6 +81,6 @@ abstract class AbstractParameter implements ParameterInterface {
      * @return bool
      */
     public function bindParam (StatementInterface $statement) {
-        return $statement->bindParam($this->getName(), $this->getValue(), $this->getType());
+        return $statement->bindValue($this->getName(), $this->getValue(), $this->getType());
     }
 }

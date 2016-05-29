@@ -49,7 +49,7 @@ class StringParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', 'value1', PDO::PARAM_STR);
 
         $this->parameter->bindParam($statement);

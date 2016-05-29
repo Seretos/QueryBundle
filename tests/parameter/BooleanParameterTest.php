@@ -49,7 +49,7 @@ class BooleanParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', true, PDO::PARAM_BOOL);
 
         $this->parameter->bindParam($statement);

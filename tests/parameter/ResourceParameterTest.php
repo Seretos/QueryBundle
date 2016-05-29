@@ -49,7 +49,7 @@ class ResourceParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', 'value1', PDO::PARAM_LOB);
 
         $this->parameter->bindParam($statement);

@@ -25,6 +25,6 @@ class DatetimeParameter extends AbstractParameter {
             throw new ParameterException('invalid datetime parameter!');
         }
 
-        return $statement->bindParam($this->getName(), $date->format('Y-m-d H:i:s'), $this->getType());
+        return $statement->bindValue($this->getName(), $date->format('Y-m-d H:i:s'), $this->getType());
     }
 }

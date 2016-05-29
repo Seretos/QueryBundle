@@ -49,7 +49,7 @@ class NullParameterTest extends PHPUnit_Framework_TestCase {
                           ->getMock();
 
         $statement->expects($this->once())
-                  ->method('bindParam')
+                  ->method('bindValue')
                   ->with('key1', null, PDO::PARAM_NULL);
 
         $this->parameter->bindParam($statement);
