@@ -99,3 +99,4 @@ Road map
 the following features are not implemented but required for version 1.0
 
 * register parameters in the factory for automatic type selection
+* use bindValue. not bindParam
