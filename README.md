@@ -8,8 +8,8 @@ add the bundle in your composer.json as bellow:
 ```js
 "require": {
     ...
-    ,"Seretos/database/QueryBundle" : "dev-master"
-    ,"Seretos/database/DriverBundle" : "dev-master"
+    ,"Seretos/database/QueryBundle" : "0.1.*"
+    ,"Seretos/database/DriverBundle" : "0.1.*"
 },
 "repositories" : [
     ...
