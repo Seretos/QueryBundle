@@ -14,11 +14,11 @@ add the bundle in your composer.json as bellow:
 "repositories" : [
     ...
     ,{
-        "type" : "vcs",
+        "type" : "git",
         "url" : "https://github.com/Seretos/QueryBundle"
      }
     ,{
-        "type" : "vcs",
+        "type" : "git",
         "url" : "https://github.com/Seretos/DriverBundle"
     }
 ]
