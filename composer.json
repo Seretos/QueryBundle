@@ -26,7 +26,6 @@
       "database\\QueryBundle\\": ""
     }
   },
-  ,
   "repositories": [
     {
       "type": "git",
