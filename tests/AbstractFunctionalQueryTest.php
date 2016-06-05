@@ -2,8 +2,7 @@
 namespace database\QueryBundle\tests;
 
 use database\DriverBundle\tests\AbstractFunctionalDatabaseTest;
-use database\QueryBundle\factory\QueryFactory;
-use database\QueryBundle\query\Query;
+use database\QueryBundle\factory\QueryBundleFactory;
 use PDO;
 
 /**
@@ -14,7 +13,7 @@ use PDO;
  */
 abstract class AbstractFunctionalQueryTest extends AbstractFunctionalDatabaseTest {
     /**
-     * @var QueryFactory
+     * @var QueryBundleFactory
      */
     protected $queryFactory;
 
@@ -22,7 +21,7 @@ abstract class AbstractFunctionalQueryTest extends AbstractFunctionalDatabaseTes
      * @test
      */
     public function simple () {
-        $query = new Query($this->queryFactory, 'SELECT * FROM example1');
+        $query = $this->queryFactory->createQuery('SELECT * FROM example1');
         $result = $query->buildResult();
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $this->assertSame(2, $result->columnCount());
@@ -38,7 +37,7 @@ abstract class AbstractFunctionalQueryTest extends AbstractFunctionalDatabaseTes
      * @test
      */
     public function arrayParameter () {
-        $query = new Query($this->queryFactory, 'SELECT * FROM example1 WHERE id IN(:params)');
+        $query = $this->queryFactory->createQuery('SELECT * FROM example1 WHERE id IN(:params)');
 
         $query->setParameter('params', [1, 2, 3]);
         $result = $query->buildResult();

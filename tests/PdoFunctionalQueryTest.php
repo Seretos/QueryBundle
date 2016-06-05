@@ -1,6 +1,6 @@
 <?php
 use database\DriverBundle\connection\pdo\PdoConnection;
-use database\QueryBundle\factory\QueryFactory;
+use database\QueryBundle\factory\QueryBundleFactory;
 use database\QueryBundle\tests\AbstractFunctionalQueryTest;
 
 /**
@@ -17,6 +17,6 @@ class PdoFunctionalQueryTest extends AbstractFunctionalQueryTest {
                                               self::CONFIG['password'],
                                               self::CONFIG['database']);
 
-        $this->queryFactory = new QueryFactory($this->connection);
+        $this->queryFactory = new QueryBundleFactory($this->connection);
     }
 }

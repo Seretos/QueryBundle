@@ -1,6 +1,6 @@
 <?php
 use database\DriverBundle\connection\mysqli\MysqliConnection;
-use database\QueryBundle\factory\QueryFactory;
+use database\QueryBundle\factory\QueryBundleFactory;
 use database\QueryBundle\tests\AbstractFunctionalQueryTest;
 
 /**
@@ -19,6 +19,6 @@ class MysqliFunctionalQueryTest extends AbstractFunctionalQueryTest {
 
         $this->connection = new MysqliConnection($mysqli);
 
-        $this->queryFactory = new QueryFactory($this->connection);
+        $this->queryFactory = new QueryBundleFactory($this->connection);
     }
 }

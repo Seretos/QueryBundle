@@ -1,6 +1,11 @@
 <?php
 use database\DriverBundle\connection\interfaces\ConnectionInterface;
-use database\DriverBundle\connection\interfaces\StatementInterface;
+use database\QueryBundle\condition\ArrayCondition;
+use database\QueryBundle\condition\BooleanCondition;
+use database\QueryBundle\condition\DatetimeCondition;
+use database\QueryBundle\condition\IntegerCondition;
+use database\QueryBundle\condition\NullCondition;
+use database\QueryBundle\condition\ResourceCondition;
 use database\QueryBundle\factory\QueryFactory;
 use database\QueryBundle\interfaces\ParameterInterface;
 use database\QueryBundle\parameter\ArrayParameter;
@@ -10,7 +15,6 @@ use database\QueryBundle\parameter\IntegerParameter;
 use database\QueryBundle\parameter\NullParameter;
 use database\QueryBundle\parameter\ResourceParameter;
 use database\QueryBundle\parameter\StringParameter;
-use database\QueryBundle\result\Result;
 
 /**
  * Created by PhpStorm.
@@ -34,6 +38,14 @@ class QueryFactoryTest extends PHPUnit_Framework_TestCase {
                                      ->getMock();
 
         $this->factory = new QueryFactory($this->connectionMock);
+
+        $this->factory->registerTypeCondition(NullCondition::class);
+        $this->factory->registerTypeCondition(BooleanCondition::class);
+        $this->factory->registerTypeCondition(IntegerCondition::class);
+        $this->factory->registerTypeCondition(ResourceCondition::class);
+        $this->factory->registerTypeCondition(ArrayCondition::class);
+        $this->factory->registerTypeCondition(DatetimeCondition::class);
+
         $this->assertSame($this->connectionMock, $this->factory->getConnection());
     }
 

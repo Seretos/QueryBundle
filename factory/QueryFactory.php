@@ -2,17 +2,9 @@
 namespace database\QueryBundle\factory;
 
 use database\DriverBundle\connection\interfaces\ConnectionInterface;
-use database\DriverBundle\connection\interfaces\StatementInterface;
+use database\QueryBundle\interfaces\ConditionInterface;
 use database\QueryBundle\interfaces\ParameterInterface;
-use database\QueryBundle\parameter\ArrayParameter;
-use database\QueryBundle\parameter\BooleanParameter;
-use database\QueryBundle\parameter\DatetimeParameter;
-use database\QueryBundle\parameter\IntegerParameter;
-use database\QueryBundle\parameter\NullParameter;
-use database\QueryBundle\parameter\ResourceParameter;
 use database\QueryBundle\parameter\StringParameter;
-use database\QueryBundle\result\Result;
-use database\QueryBundle\result\ResultIterator;
 
 /**
  * Created by PhpStorm.
@@ -26,8 +18,18 @@ class QueryFactory {
      */
     private $connection;
 
+    /**
+     * @var ConditionInterface[]
+     */
+    private $conditions;
+
     public function __construct (ConnectionInterface $connection) {
         $this->connection = $connection;
+        $this->conditions = [];
+    }
+
+    public function registerTypeCondition ($class) {
+        $this->conditions[] = new $class();
     }
 
     /**
@@ -49,18 +51,12 @@ class QueryFactory {
             return new $type($this, $name, $value);
         }
 
-        if ($value === null) {
-            return new NullParameter($this, $name, $value);
-        } else if (is_bool($value)) {
-            return new BooleanParameter($this, $name, $value);
-        } else if (is_int($value)) {
-            return new IntegerParameter($this, $name, $value);
-        } else if (is_resource($value)) {
-            return new ResourceParameter($this, $name, $value);
-        } else if (is_array($value)) {
-            return new ArrayParameter($this, $name, $value);
-        } else if ($value instanceof \DateTime) {
-            return new DatetimeParameter($this, $name, $value);
+        foreach ($this->conditions as $condition) {
+            if ($condition->condition($value)) {
+                $type = $condition->getParameterType();
+
+                return new $type($this, $name, $value);
+            }
         }
 
         return new StringParameter($this, $name, $value);

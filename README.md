@@ -30,8 +30,8 @@ Usage
 first create a query factory with your [driver bundle connection](https://github.com/Seretos/DriverBundle)
 and create a query object for your statement
 ```php
-$queryFactory = new QueryFactory($this->connection);
-$query = new Query($this->queryFactory, 'SELECT * FROM example1');
+$queryFactory = new QueryBundleFactory($this->connection);
+$query = $queryFactory->createQuery('SELECT * FROM example1');
 
 //export the query object to an StatementInterface object (see DriverBundle)
 $executedStatement = $query->buildResult();
@@ -42,7 +42,7 @@ with this query object you can use plugin based parameter types for your query p
 array parameter
 ---------------
 ```php
-$query = new Query($this->queryFactory,'SELECT * FROM example1 WHERE id IN(:ids)')
+$query = $queryFactory->createQuery('SELECT * FROM example1 WHERE id IN(:ids)')
 $query->setParameter('ids',[1,2,3]);
 
 $result = $query->buildResult(); // generate a new statement 'SELECT * FROM example1 WHERE id IN(:ids_0,:ids_1,:ids_2)' with setted parameters
@@ -57,7 +57,7 @@ $result = $query->buildResult(); //return the last statement again executed with
 datetime parameter
 ------------------
 ```php
-$query = new Query($this->queryFactory,'SELECT * FROM example1 WHERE datecolumn BETWEEN :date1 AND :date2');
+$query = $queryFactory->createQuery('SELECT * FROM example1 WHERE datecolumn BETWEEN :date1 AND :date2');
 $query->setParameter('date1',new Datetime());
 $query->setParameter('date2',new Datetime());
 
@@ -94,9 +94,24 @@ to use this class you can set the third setParameter argument.
 $query->setParameter('test','value',MyCustomParameter::class);
 ```
 
+you can also register a parameter with an condition.
+```php
+class MyCustomCondition implements ConditionInterface {
+
+    public function condition ($value) {
+        return is_bool($value);
+    }
+
+    public function getParameterType () {
+        return MyCustomParameter::class;
+    }
+}
+```
+register your condition:
+```php
+$queryFactory->registerTypeCondition(MyCustomCondition::class);
+```
+
 Road map
 ========
 the following features are not implemented but required for version 1.0
-
-* register parameters in the factory for automatic type selection
-* use bindValue. not bindParam

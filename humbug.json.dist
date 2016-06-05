@@ -1,0 +1,19 @@
+{
+  "source": {
+    "directories": [
+      "database/QueryBundle/condition",
+      "database/QueryBundle/exception",
+      "database/QueryBundle/factory",
+      "database/QueryBundle/interfaces",
+      "database/QueryBundle/parameter",
+      "database/QueryBundle/query"
+    ],
+    "excludes": [
+      "tests"
+    ]
+  },
+  "timeout": 40,
+  "logs": {
+    "text": "humbuglog.txt"
+  }
+}
