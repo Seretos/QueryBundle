@@ -9,7 +9,6 @@ add the bundle in your composer.json as bellow:
 "require": {
     ...
     ,"Seretos/database/QueryBundle" : "v0.1.*"
-    ,"Seretos/database/DriverBundle" : "v0.1.*"
 },
 "repositories" : [
     ...
