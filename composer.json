@@ -25,11 +25,5 @@
     "psr-4": {
       "database\\QueryBundle\\": ""
     }
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/Seretos/DriverBundle"
-    }
-  ]
+  }
 }
