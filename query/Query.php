@@ -88,7 +88,7 @@ class Query {
     }
 
     /**
-     * @param $mode
+     * @param int $mode
      *
      * @return bool
      */

@@ -19,6 +19,9 @@ use database\QueryBundle\condition\ResourceCondition;
 use database\QueryBundle\query\Query;
 
 class QueryBundleFactory {
+    /**
+     * @var QueryFactory
+     */
     private $queryFactory;
 
     public function __construct (ConnectionInterface $connection) {
@@ -32,10 +35,19 @@ class QueryBundleFactory {
         $this->registerTypeCondition(DatetimeCondition::class);
     }
 
+    /**
+     * @param string $class class name (require implements the ConditionInterface)
+     */
     public function registerTypeCondition ($class) {
         $this->queryFactory->registerTypeCondition($class);
     }
 
+    /**
+     * @param string $sql
+     * @param array  $parameters
+     *
+     * @return Query
+     */
     public function createQuery ($sql, $parameters = []) {
         $query = new Query($this->queryFactory, $sql);
         $query->setParameters($parameters);

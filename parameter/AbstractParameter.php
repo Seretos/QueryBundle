@@ -55,6 +55,9 @@ abstract class AbstractParameter implements ParameterInterface {
         return $this->value;
     }
 
+    /**
+     * @return int
+     */
     public function getType () {
         return \PDO::PARAM_STR;
     }

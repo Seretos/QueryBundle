@@ -28,6 +28,9 @@ class QueryFactory {
         $this->conditions = [];
     }
 
+    /**
+     * @param string $class class name (require implements the ConditionInterface)
+     */
     public function registerTypeCondition ($class) {
         $this->conditions[] = new $class();
     }

@@ -5,16 +5,9 @@
          colors="true">
     <testsuites>
         <testsuite name="query unit tests">
-            <file>tests/factory/QueryFactoryTest.php</file>
-            <file>tests/factory/QueryBundleFactoryTest.php</file>
-            <file>tests/parameter/ArrayParameterTest.php</file>
-            <file>tests/parameter/BooleanParameterTest.php</file>
-            <file>tests/parameter/DatetimeParameterTest.php</file>
-            <file>tests/parameter/IntegerParameterTest.php</file>
-            <file>tests/parameter/NullParameterTest.php</file>
-            <file>tests/parameter/ResourceParameterTest.php</file>
-            <file>tests/parameter/StringParameterTest.php</file>
-            <file>tests/query/QueryTest.php</file>
+            <directory>tests/factory</directory>
+            <directory>tests/parameter</directory>
+            <directory>tests/query/QueryTest.php</directory>
         </testsuite>
 
         <testsuite name="query functional tests">
