@@ -110,7 +110,3 @@ register your condition:
 ```php
 $queryFactory->registerTypeCondition(MyCustomCondition::class);
 ```
-
-Road map
-========
-the following features are not implemented but required for version 1.0
