@@ -25,5 +25,10 @@
     "psr-4": {
       "database\\QueryBundle\\": ""
     }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2.x-dev"
+    }
   }
 }
